@@ -21,3 +21,10 @@
 `python manage.py migrate`
 9. Run Server  
 `python manage.py runserver`
+
+## Optional
+Generate your secret key and replace the default secret key located in `secrets.py`.  
+
+Run the following line of code in terminal and copy the result  
+```python -c "from django.core.management import utils; print(utils.get_random_secret_key())"```  
+Note: you will have to run the code in environment installed with django

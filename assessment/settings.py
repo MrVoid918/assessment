@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 from django.contrib import messages
+import json
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +26,13 @@ MEDIA_DIR = BASE_DIR.joinpath(MEDIA_DIR_NAME)
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-*vn%k8)-4ob*w0s7l^h=a)m#p5o($_=l1qa-^p+fep$!nrmb^b'
+if BASE_DIR.joinpath("secrets.json").exists():
+    with open("secrets.json") as f:
+        SECRET_KEY = json.load(f)["secrets"]
+else:
+    SECRET_KEY = os.environ["DJANGO_SECRETS_KEY"]
+
+print(SECRET_KEY)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
