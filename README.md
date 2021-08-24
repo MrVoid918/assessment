@@ -9,16 +9,17 @@
 3. Create a new venv  
 ```python -m venv ./venv```
 4. Enter the new virtual environment  
-```source venv/scripts/activate```
+`Linux: source venv/scripts/activate`  
+`Windows: venv\scripts\activate`
 5. Install requirements.txt  
-```pip install requirements.txt```
-6. Create your superuser for the app  
-```python manage.py createsuperuser```
-7. Create `media` directory  
-```mkdir media```
-8. Perform migrations  
+```pip install -r requirements.txt```
+6. Perform migrations  
 `python manage.py makemigrations`  
 `python manage.py migrate`
+7. Create your superuser for the app  
+```python manage.py createsuperuser```
+8. Create `media` directory  
+```mkdir media```
 9. Run Server  
 `python manage.py runserver`
 

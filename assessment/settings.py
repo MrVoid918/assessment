@@ -32,8 +32,6 @@ if BASE_DIR.joinpath("secrets.json").exists():
 else:
     SECRET_KEY = os.environ["DJANGO_SECRETS_KEY"]
 
-print(SECRET_KEY)
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
