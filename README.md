@@ -22,6 +22,7 @@
 ```mkdir media```
 9. Run Server  
 `python manage.py runserver`
+10. View at `localhost:8000`
 
 ## Optional
 Generate your secret key and replace the default secret key located in `secrets.json`.  
