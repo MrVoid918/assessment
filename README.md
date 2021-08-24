@@ -23,7 +23,7 @@
 `python manage.py runserver`
 
 ## Optional
-Generate your secret key and replace the default secret key located in `secrets.py`.  
+Generate your secret key and replace the default secret key located in `secrets.json`.  
 
 Run the following line of code in terminal and copy the result  
 ```python -c "from django.core.management import utils; print(utils.get_random_secret_key())"```  
