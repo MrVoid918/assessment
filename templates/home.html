@@ -1,0 +1,25 @@
+<!-- templates/home.html-->>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <h2 style="text-align:start;">Claims</h2>
+</div>
+{% if user.is_authenticated %}
+<div>
+    <h2>Hi {{ user.username }}</h2>
+    <p>
+        <a href="{% url 'logout' %}" class="btn btn-primary">Log Out</a>
+        <a href="{% url 'Claims' %}" class="btn btn-success">Submit Claim</a>
+    </p>
+</div>
+{% else %}
+<div style="width: 400px; margin: auto;">
+    <a href="{% url 'login' %}" class="btn btn-primary">Log In</a>
+    <a href="{% url 'signup' %}" class="btn btn-success">Sign Up</a>
+    <a href="{% url 'admin:index' %}" class="btn btn-warning">Log In as Admin</a>
+</div>
+{% endif %}
+{% endblock %}

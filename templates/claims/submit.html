@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Submit Claim{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="jumbotron">
+	<h1><a href="{% url 'home' %}" class="title">Fill out the form</a></h1>
+</div>
+{% include 'messages.html' %}
+<div class="col-md-2">
+	<form method="POST" enctype="multipart/form-data">
+		{{form.as_p}}
+		{% csrf_token %}
+		<input type="submit" class="btn btn-primary" value="Submit">
+	</form>
+</div>
+{% else %}
+<p>You are not logged in</p>
+<a href="{% url 'login' %}" class="btn btn-primary"> Log In</a>
+{% endif %}
+{% endblock %}
