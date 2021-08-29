@@ -10,6 +10,7 @@
         </a>
     </h2>
 </div>
+<div class="col-md-6">
 <table border="5">
     {% for key, value in item.items %}
     <!--Iterate non-files fields-->
@@ -46,4 +47,5 @@
     {% if status == "IP" %}
         <a href="../edit/{{ id }}" class="btn btn-primary">Edit</a>
     {% endif %}
+</div>
 {% endblock %}
