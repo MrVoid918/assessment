@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ id }}{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <h2 style="text-align:start;">
+        <a href="{% url 'home' %}" class="title">
+            View Your Claim
+        </a>
+    </h2>
+</div>
+<table border="5">
+    {% for key, value in item.items %}
+    <!--Iterate non-files fields-->
+    <tr>
+        <td width=40%>{{key}}</td>
+        <td width=40%>
+            {% if key == "Claim Status" %}
+            <!--Print color based on claim status
+                Another way is to use css class -->
+                {% if value == "In Progress" %}
+                    <font color="yellow">{{value}}</font>
+                {% else %}
+                    <font color="green">{{value}}</font>
+                {% endif %}
+            {% else %}
+                {{value}}
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+
+    {% for file_key, file_value in files.items %}
+    <!--Iterate files-->
+    <tr>
+        <td width=40%>{{file_key}}</td>
+        <td width=40%>
+            <a href="../../media/{{ file_value.path }}">
+                {{ file_value.filename }}
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+    {% if status == "IP" %}
+        <a href="../edit/{{ id }}" class="btn btn-primary">Edit</a>
+    {% endif %}
+{% endblock %}

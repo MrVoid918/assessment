@@ -11,14 +11,14 @@ class TimeInput(forms.TimeInput):
     input_type = "time"
 
     def __init__(self):
-        super().__init__(format='%I:%M %p')
+        super().__init__(format='%H:%M')
 
 
 class ClaimsForms(forms.ModelForm):
 
     class Meta:
         model = models.Claims
-        exclude = ('claim_status',)
+        exclude = ('claim_status', 'user')
         widgets = {"date_accident": DateInput(),
                    "time_accident": TimeInput(), }
         input_formats = {"time_accident": "%I:%M %p"}

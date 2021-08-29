@@ -24,6 +24,11 @@ from django.views.generic.base import TemplateView
 urlpatterns = [
     path('claims-admin/', admin.site.urls, name="admin"),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
+    path('claims', views.claim_view, name="claims_view"),
+    path('claims/view/<str:id>', views.indv_claim_view, name="indv_claims_view"),
+    path('claims/edit/<str:id>', views.indv_claim_edit, name="indv_claims_edit"),
+    path('claims/delete/<str:id>', views.indv_claim_delete,
+         name="indv_claims_delete"),
     path('claims/submit', views.claim_form_view, name="Claims"),
     path('accounts/', include("django.contrib.auth.urls")),
     path('accounts/', include("accounts.urls"))

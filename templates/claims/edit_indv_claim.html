@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ id }}{% endblock %}
+
+{% block content %}
+<div class="jumbotron ">
+    <h2 style="text-align:start;">
+        <a href="{% url 'home' %}" class="title">
+            Edit Your Claim
+        </a>
+    </h2>
+</div>
+<form method="POST" enctype="multipart/form-data">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <input type="submit" class="btn btn-primary" value="Submit">
+</form>
+{% endblock %}

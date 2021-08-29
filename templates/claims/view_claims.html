@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Submit Claim{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <h2><a href="{% url 'home' %}" class="title">Claims</a></h2>
+</div>
+
+{% if query_results %}
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Date of Accident</th>
+        <th>Time of Accident</th>
+        <th>Status</th>
+    </tr>
+    {% for item in query_results %}
+    <tr>
+        <td width=20%>{{ item.name }}</td>
+        <td width=20%>{{ item.date_accident }}</td>
+        <td width=20%>{{ item.time_accident }}</td>
+        {% if item.claim_status == "IP" %}
+            <td width=20%>
+                <font color="yellow">In Progress</font>
+            </td>
+            <td width=10%>
+                <a href="/claims/view/{{item.id}}" class="btn btn-primary">View</a>
+            </td>
+            <td width=10%>
+                <a href="/claims/delete/{{item.id}}" class="btn btn-danger">Delete</a>
+            </td>
+            {% else %}
+            <td width=20%>
+                <font color="green">Accepted</font>
+            </td>
+            <td width=10%>
+                <a href="/claims/view/{{item.id}}" class="btn btn-primary">View</a>
+            </td>
+        {% endif %}
+    {% endfor %}
+    </tr>
+</table>
+{% else %}
+<h2>No claims submitted</h2>
+{% endif %}
+{% endblock %}

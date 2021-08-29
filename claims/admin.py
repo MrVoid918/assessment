@@ -9,6 +9,7 @@ class ClaimsAdmin(admin.ModelAdmin):
 
     list_display = ['name', 'claim_status']
     actions = ['approve']
+    readonly_fields = ['user']
 
     @admin.action(description="Update status to Accepted")
     def approve(self, request, queryset):
